@@ -1,12 +1,11 @@
-# Taco API with FastAPI
+# 🌮 Taco API with FastAPI 🚀
 
 What's a what?
 ---
 
-* [FastAPI](https://fastapi.tiangolo.com/)
-* [Uvicorn](https://www.uvicorn.org/)
+* [FastAPI](https://fastapi.tiangolo.com/) - FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
+* [Uvicorn](https://www.uvicorn.org/) - Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools.
 
---- 
 
 Tools
 ---
