@@ -1,5 +1,10 @@
 # 🌮 Taco API with FastAPI 🚀
 
+<p align="center">
+  <a href="https://github.com/tskaggs/taco-fast-api/actions"><img alt="javscript-action status" src="https://github.com/BogDAAAMN/gh-action-deta-deploy-test/workflows/Deploy%20to%20Deta/badge.svg"></a>
+</p>
+
+
 What's a what?
 ---
 
