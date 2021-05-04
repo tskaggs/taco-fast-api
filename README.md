@@ -24,4 +24,13 @@ But how...
 // Clone
 // Then install requirements
 > pip install -r requirements.txt
+// Run App
+> uvicorn main:app --reload  
 ```
+
+The more you know 🌈
+---
+* POST: to create data.
+* GET: to read data.
+* PUT: to update data.
+* DELETE: to delete data.
