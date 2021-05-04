@@ -2,7 +2,7 @@ from deta import Deta  # Import Deta
 import os
 
 # Initialize with a Project Key
-deta = Deta(os.environ['DETA_ACCESS_TOKEN'])
+deta = Deta()
 
 
 def connect_toppings():
