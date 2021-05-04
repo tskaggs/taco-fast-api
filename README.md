@@ -10,7 +10,7 @@ What's a what?
 
 * [FastAPI](https://fastapi.tiangolo.com/) - FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints.
 * [Uvicorn](https://www.uvicorn.org/) - Uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools.
-
+* [Deta](https://www.deta.sh/) - A Cloud for the Next Billion Ideas.
 
 Tools
 ---
