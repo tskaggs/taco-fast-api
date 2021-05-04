@@ -4,49 +4,95 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 
-class ModelName(str, Enum):
+class ToppingName(str, Enum):
     cheese = "cheese"
     tomatoes = "tomatoes"
     carnitas = "carnitas"
 
 
-class Item(BaseModel):
+class Taco(BaseModel):
     name: str
     description: Optional[str] = None
     price: float
-    tax: Optional[float] = None
+    random: bool = None
+
+
+fake_tacos_db = [
+    {
+        "name": "Jumbo Rocket",
+        "description": "This sh*t is huge!!",
+        "price": "18",
+        "toppings": [
+            {
+                "name": "tomato",
+                "description": "Gross."
+            },
+            {
+                "name": "carnitas",
+                "description": "I'll take all of it."
+            }
+        ]
+    },
+    {
+        "name": "Party Rocket",
+        "description": "Dance!!",
+        "price": "13",
+        "toppings": [
+            {
+                "name": "cheese",
+                "description": "Put it all on my taco."
+            },
+            {
+                "name": "carnitas",
+                "description": "I'll take all of it."
+            }
+        ]
+    },
+    {
+        "name": "Boring",
+        "description": "ZzzzZzzzz",
+        "price": "8",
+        "toppings": [
+            {
+                "name": "cheese",
+                "description": "Put it all on my taco."
+            }
+        ]
+    }
+]
 
 
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+@app.get("/tacos/")
+async def read_item(skip: int = 0, limit: int = 10):
+    return fake_tacos_db[skip : skip + limit]
 
 
-@app.get("/taco/{model_name}")
-async def get_model(model_name: ModelName):
-    if model_name == ModelName.alexnet:
-        return {"model_name": model_name, "message": "Deep Learning FTW!"}
+@app.get("/tacos/topping/{topping_name}")
+async def get_(topping_name: ToppingName):
+    if topping_name == ToppingName.tomatoes:
+        return {"model_name": topping_name, "message": "Gross."}
 
-    if model_name.value == "lenet":
-        return {"model_name": model_name, "message": "LeCNN all the images"}
+    if topping_name == ToppingName.cheese:
+        return {"model_name": topping_name, "message": "Put it all on my taco."}
 
-    return {"model_name": model_name, "message": "Have some residuals"}
+    return {"model_name": topping_name, "message": "I'll take all of it."}
 
 
-@app.get("/items/{item_id}")
+@app.get("/tacos/{item_id}")
 async def read_item(item_id: str, q: Optional[str] = None):
     if q:
         return {"item_id": item_id, "q": q}
     return {"item_id": item_id}
 
 
-@app.post("/items/")
-async def create_item(item: Item):
-    item_dict = item.dict()
-    if item.tax:
-        price_with_tax = item.price + item.tax
-        item_dict.update({"price_with_tax": price_with_tax})
-    return item_dict
+@app.post("/tacos/")
+async def create_item(taco: Taco):
+    taco_dict = taco.dict()
+    if taco.random:
+        taco_dict.update({"taco": [
+            {"tomato"}
+        ]})
+    return taco_dict
